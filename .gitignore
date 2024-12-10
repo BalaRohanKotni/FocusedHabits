@@ -53,3 +53,4 @@ app.*.map.json
 firepit-log.txt
 pubspec.lock
 firebase.json
+lib/firebase_options.dart
