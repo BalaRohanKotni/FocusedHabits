@@ -21,6 +21,10 @@ List<String> months = [
   'Dec'
 ];
 
+TextStyle semiBold18() {
+  return const TextStyle(fontSize: 18, fontWeight: FontWeight.w600);
+}
+
 Color kAppBackgroundColor = Colors.grey[900]!;
 // kAppBackgroundColor = Colors.white;
 Future<bool> hasNetwork() async {

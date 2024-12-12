@@ -4,6 +4,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_habits/constants.dart';
+import 'package:focused_habits/screens/forgot_password.dart';
 import 'package:focused_habits/screens/signup_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -137,11 +138,11 @@ class _SignInScreenState extends State<SignInScreen> {
                             highlightColor: Colors.transparent,
                             onPressed: () {
                               // TODO Forgot password
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => ForgotPassword(
-                              //             email: emailController.text)));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ForgotPassword(
+                                          email: emailController.text)));
                             },
                             child: const Text(
                               "Forgot password?",
