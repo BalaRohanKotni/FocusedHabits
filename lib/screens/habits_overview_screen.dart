@@ -6,6 +6,7 @@ import 'package:focused_habits/components/new_habit_bottomsheet.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/controllers/firestore_operations.dart';
 import 'package:focused_habits/screens/habit_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:reorderable_grid_view/reorderable_grid_view.dart';
 
 class HabitsScreen extends StatefulWidget {
@@ -130,7 +131,8 @@ class _HabitsScreenState extends State<HabitsScreen> {
                               },
                               child: Text(
                                 "More Details",
-                                style: TextStyle(color: Colors.indigo[400]),
+                                style:
+                                    GoogleFonts.lato(color: Colors.indigo[400]),
                               ),
                             )
                           ],

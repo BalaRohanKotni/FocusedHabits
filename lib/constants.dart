@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 enum FocusSessionStatus { active, inactive, paused }
@@ -22,7 +23,7 @@ List<String> months = [
 ];
 
 TextStyle semiBold18() {
-  return const TextStyle(fontSize: 18, fontWeight: FontWeight.w600);
+  return GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600);
 }
 
 Color kAppBackgroundColor = Colors.grey[900]!;
@@ -66,7 +67,7 @@ String firebaseExceptionHandler(e, networkStatus) {
       break;
     default:
       if (!networkStatus) {
-        error = "No internet connection";
+        error = "No openSansnet connection";
       } else {
         error = e.message;
       }

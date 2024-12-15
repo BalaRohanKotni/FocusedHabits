@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_habits/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/firestore_operations.dart';
 
@@ -31,7 +32,7 @@ class NewHabitBottomSheetState extends State<NewHabitBottomSheet> {
               children: [
                 Text(
                   "Create a new Habit",
-                  style: TextStyle(
+                  style: GoogleFonts.lato(
                     fontSize: 20,
                     color: Colors.indigo[400],
                   ),
@@ -47,11 +48,11 @@ class NewHabitBottomSheetState extends State<NewHabitBottomSheet> {
                         decoration: InputDecoration(
                           border: const OutlineInputBorder(),
                           labelText: 'New Habit',
-                          labelStyle: TextStyle(
+                          labelStyle: GoogleFonts.lato(
                             color: Colors.indigo[400],
                           ),
                         ),
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           color: Colors.indigo[400],
                         ),
                         cursorColor: Colors.indigo[400],
@@ -81,7 +82,7 @@ class NewHabitBottomSheetState extends State<NewHabitBottomSheet> {
                       children: [
                         Text(
                           "Units:",
-                          style: TextStyle(
+                          style: GoogleFonts.lato(
                               color: Colors.indigo[400],
                               fontSize: 16,
                               fontWeight: FontWeight.w600),
@@ -100,7 +101,7 @@ class NewHabitBottomSheetState extends State<NewHabitBottomSheet> {
                               unitsFocusNode.unfocus();
                             });
                           },
-                          style: TextStyle(
+                          style: GoogleFonts.lato(
                               color: Colors.indigo[400], fontSize: 16),
                           items: const [
                             DropdownMenuItem(
@@ -119,7 +120,8 @@ class NewHabitBottomSheetState extends State<NewHabitBottomSheet> {
                             Navigator.pop(bottomSheetContext);
                           },
                           child: Text("Cancel",
-                              style: TextStyle(color: Colors.indigo[400])),
+                              style:
+                                  GoogleFonts.lato(color: Colors.indigo[400])),
                         ),
                         TextButton(
                           onPressed: () {
@@ -133,9 +135,10 @@ class NewHabitBottomSheetState extends State<NewHabitBottomSheet> {
                             );
                             Navigator.pop(bottomSheetContext);
                           },
-                          child: const Text(
+                          child: Text(
                             "Add",
-                            style: TextStyle(color: Color(0xFF02925D)),
+                            style: GoogleFonts.lato(
+                                color: const Color(0xFF02925D)),
                           ),
                         ),
                       ],

@@ -4,6 +4,7 @@ import 'package:focused_habits/components/bottom_duration_picker.dart';
 import 'package:focused_habits/components/heatmap_calendar.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/controllers/firestore_operations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HeatMapTile extends StatefulWidget {
   final DateTime date;
@@ -67,7 +68,7 @@ class _HeatMapTileState extends State<HeatMapTile> {
                     (widget.showHabitName)
                         ? Text(
                             widget.habitName,
-                            style: TextStyle(
+                            style: GoogleFonts.lato(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                               color: Colors.indigo[400],
@@ -92,7 +93,7 @@ class _HeatMapTileState extends State<HeatMapTile> {
                                     )),
                                 child: Text(
                                   "${months[date.month - 1]} ${date.day} ${date.year}: ",
-                                  style: TextStyle(
+                                  style: GoogleFonts.lato(
                                     color: Colors.indigo[400],
                                     decoration: TextDecoration.underline,
                                   ),

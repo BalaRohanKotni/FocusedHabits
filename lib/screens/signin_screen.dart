@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/screens/forgot_password.dart';
 import 'package:focused_habits/screens/signup_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -53,12 +54,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 alignment: Alignment.bottomLeft,
                 child: Container(
                   margin: const EdgeInsets.only(left: 18),
-                  child: const Text(
+                  child: Text(
                     "Sign in to your Account",
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       fontWeight: FontWeight.w600,
                       fontSize: 38,
-                      color: Color(0xFF2e86ab),
+                      color: const Color(0xFF2e86ab),
                     ),
                   ),
                 ),
@@ -93,7 +94,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
-                          style: const TextStyle(fontSize: 16),
+                          style: GoogleFonts.lato(fontSize: 16),
                           onSubmitted: (_) => signIn(),
                           decoration: const InputDecoration(
                               labelText: "Password",
@@ -113,14 +114,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(10)))),
-                          child: const Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
                                 child: Text(
                                   "Sign in",
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: GoogleFonts.lato(
                                     fontSize: 18,
                                   ),
                                 ),
@@ -137,23 +138,23 @@ class _SignInScreenState extends State<SignInScreen> {
                             splashColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onPressed: () {
-                              // TODO Forgot password
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => ForgotPassword(
                                           email: emailController.text)));
                             },
-                            child: const Text(
+                            child: Text(
                               "Forgot password?",
-                              style: TextStyle(color: Color(0xFF058ed9)),
+                              style: GoogleFonts.lato(
+                                  color: const Color(0xFF058ed9)),
                             ),
                           ),
                         ],
                       ),
-                      const Text(
+                      Text(
                         "or",
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontSize: 18,
                         ),
                       ),
@@ -164,9 +165,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           alignment: WrapAlignment.center,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            const Text(
+                            Text(
                               "New?",
-                              style: TextStyle(fontSize: 16),
+                              style: GoogleFonts.lato(fontSize: 16),
                             ),
                             MaterialButton(
                               padding: const EdgeInsets.only(left: 8),
@@ -180,10 +181,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                         builder: (context) =>
                                             const SignupScreen()));
                               },
-                              child: const Text(
+                              child: Text(
                                 "Create an account",
-                                style: TextStyle(color: Color(0xFF058ed9)),
-                                // style: TextStyle(
+                                style: GoogleFonts.lato(
+                                    color: const Color(0xFF058ed9)),
+                                // style: GoogleFonts.lato (
                                 //     color: kPurpleDarkShade, fontSize: 16),
                               ),
                             )

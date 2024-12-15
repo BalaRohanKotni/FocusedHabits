@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:focused_habits/screens/home_screen.dart';
 import 'package:focused_habits/screens/signin_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -47,7 +48,19 @@ class _AppScreenState extends State<AppScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var textTheme = GoogleFonts.lato();
     return MaterialApp(
+      theme: Theme.of(context).copyWith(
+        textTheme: TextTheme(
+          bodyLarge: textTheme,
+          bodyMedium: textTheme,
+          displayLarge: textTheme,
+          displayMedium: textTheme,
+          displaySmall: textTheme,
+          bodySmall: textTheme,
+          // Set other text styles as needed
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),

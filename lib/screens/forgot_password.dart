@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/screens/signup_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ForgotPassword extends StatefulWidget {
   final String email;
@@ -70,9 +71,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             // color: kPurpleDarkShade,
                           ),
                         ),
-                        const Text(
+                        Text(
                           "Recieve an email to reset password",
-                          style: TextStyle(
+                          style: GoogleFonts.lato(
                               // color: kPurpleDarkShade,
                               ),
                         ),
@@ -118,14 +119,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                     RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(10)))),
-                            child: const Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Expanded(
                                   child: Text(
                                     "Reset password",
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 18),
+                                    style: GoogleFonts.lato(fontSize: 18),
                                   ),
                                 ),
                               ],

@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
   final String email;
@@ -80,12 +81,12 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             alignment: Alignment.bottomLeft,
             child: Container(
               margin: const EdgeInsets.only(left: 18),
-              child: const Text(
+              child: Text(
                 "Verify email address",
-                style: TextStyle(
+                style: GoogleFonts.lato(
                   fontWeight: FontWeight.w600,
                   fontSize: 38,
-                  color: Color(0xFF2e86ab),
+                  color: const Color(0xFF2e86ab),
                 ),
               ),
             ),
@@ -116,12 +117,12 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                               WidgetStateProperty.all(Colors.white),
                           shape: WidgetStateProperty.all(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)))),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             "Resend email",
-                            style: TextStyle(fontSize: 18),
+                            style: GoogleFonts.lato(fontSize: 18),
                           ),
                         ],
                       ),
@@ -141,12 +142,12 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                               WidgetStateProperty.all(const Color(0xFF0d0628)),
                           shape: WidgetStateProperty.all(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)))),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             "Cancel",
-                            style: TextStyle(fontSize: 18),
+                            style: GoogleFonts.lato(fontSize: 18),
                           ),
                         ],
                       ),

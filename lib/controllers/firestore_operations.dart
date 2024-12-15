@@ -17,8 +17,16 @@ Future firestoreCreateUserCollection(User user, String name) async {
       'habitIndex': 0,
       'focusIndex': 0,
       'theme': "light",
+      'defaultTabIndex': 1,
     },
   );
+}
+
+Future firestoreSetDefaultTabIndex(User user, int index) async {
+  return await FirebaseFirestore.instance
+      .collection(firestoreCollection)
+      .doc(user.uid)
+      .update({"defaultTabIndex": index});
 }
 
 Future firestoreSetTheme(User user, String theme) async {

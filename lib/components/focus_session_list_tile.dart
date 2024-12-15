@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/controllers/firestore_operations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class FocusSessionListTile extends StatefulWidget {
@@ -82,7 +83,7 @@ class _FocusSessionListTileState extends State<FocusSessionListTile> {
                   (widget.isLinkedWithHabit)
                       ? Text(
                           widget.habitName,
-                          style: TextStyle(
+                          style: GoogleFonts.lato(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
                               color: Colors.indigo[400]),
@@ -92,7 +93,7 @@ class _FocusSessionListTileState extends State<FocusSessionListTile> {
                     controller: focusNoteController,
                     focusNode: focusNode,
                     textAlignVertical: TextAlignVertical.top,
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       fontSize: 14,
                       color: Colors.indigo[400],
                     ),
@@ -100,7 +101,7 @@ class _FocusSessionListTileState extends State<FocusSessionListTile> {
                       border: InputBorder.none,
                       isDense: true,
                       hintText: "Add a note",
-                      hintStyle: TextStyle(
+                      hintStyle: GoogleFonts.lato(
                         fontSize: 12,
                         fontWeight: FontWeight.w300,
                         color: Colors.indigo[400],
@@ -142,7 +143,7 @@ class _FocusSessionListTileState extends State<FocusSessionListTile> {
                     DateFormat('MMM dd, y').format(
                         DateTime.fromMillisecondsSinceEpoch(widget
                             .focusSession['dateTimeMillisecondsSinceEpoch'])),
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       fontSize: 14,
                       fontWeight: FontWeight.w300,
                       color: Colors.indigo[400],
@@ -152,7 +153,7 @@ class _FocusSessionListTileState extends State<FocusSessionListTile> {
                     DateFormat('HH:mm').format(
                         DateTime.fromMillisecondsSinceEpoch(widget
                             .focusSession['dateTimeMillisecondsSinceEpoch'])),
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       fontSize: 14,
                       fontWeight: FontWeight.w300,
                       color: Colors.indigo[400],
@@ -160,7 +161,7 @@ class _FocusSessionListTileState extends State<FocusSessionListTile> {
                   ),
                   Text(
                     widget.formattedFocusSessionValue,
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: Colors.indigo[400],

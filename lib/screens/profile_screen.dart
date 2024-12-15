@@ -6,6 +6,7 @@ import 'package:focused_habits/components/focus_session_list_tile.dart';
 import 'package:focused_habits/components/heatmap_tile.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/controllers/firestore_operations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -168,7 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
                                   ),
-                                  style: TextStyle(
+                                  style: GoogleFonts.lato(
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.indigo[400],
@@ -205,19 +206,59 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             : Icons.nightlight,
                                         color: Colors.indigo[400]),
                                   ),
-                                  TextButton(
-                                    onPressed: () {
-                                      FirebaseAuth.instance.signOut();
-                                    },
-                                    child: Text(
-                                      "Logout",
-                                      style: TextStyle(
-                                        color: Colors.indigo[400],
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                  // TextButton(
+                                  //   onPressed: () {
+                                  //     FirebaseAuth.instance.signOut();
+                                  //   },
+                                  //   child: Text(
+                                  //     "Logout",
+                                  //     style: GoogleFonts.lato (
+                                  //       color: Colors.indigo[400],
+                                  //       fontSize: 16,
+                                  //       fontWeight: FontWeight.bold,
+                                  //     ),
+                                  //   ),
+                                  // ),
+                                  PopupMenuButton(
+                                    color: kAppBackgroundColor,
+                                    icon: Icon(
+                                      Icons.more_vert,
+                                      color: Colors.indigo[400],
                                     ),
-                                  ),
+                                    itemBuilder: (context) {
+                                      return [
+                                        PopupMenuItem(
+                                          onTap: () {
+                                            FirebaseAuth.instance.signOut();
+                                          },
+                                          child: Text(
+                                            "Logout",
+                                            style: GoogleFonts.lato(
+                                              color: Colors.indigo[400],
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        PopupMenuItem(
+                                          onTap: () {
+                                            firestoreSetDefaultTabIndex(
+                                                FirebaseAuth
+                                                    .instance.currentUser!,
+                                                0);
+                                          },
+                                          child: Text(
+                                            "Set this screen on launch",
+                                            style: GoogleFonts.lato(
+                                              color: Colors.indigo[400],
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ];
+                                    },
+                                  )
                                 ],
                               ),
                             ],
@@ -368,7 +409,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         children: [
                                           Text(
                                             "Total time in focus: $formattedTotalFocusDuration",
-                                            style: TextStyle(
+                                            style: GoogleFonts.lato(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.indigo[400],
@@ -461,7 +502,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         yearTextEditingController,
                                                     keyboardType:
                                                         TextInputType.number,
-                                                    style: TextStyle(
+                                                    style: GoogleFonts.lato(
                                                       fontSize: 16,
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -577,7 +618,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         months.indexOf(month),
                                                     child: Text(
                                                       month,
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.lato(
                                                         fontSize: 15,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -645,7 +686,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         children: [
                                           Text(
                                             "Time in focus in ${months[monthIndex]} ${yearTextEditingController.text} : ",
-                                            style: TextStyle(
+                                            style: GoogleFonts.lato(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.indigo[400],
@@ -653,7 +694,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ),
                                           Text(
                                             formattedRangeFocusDuration,
-                                            style: TextStyle(
+                                            style: GoogleFonts.lato(
                                                 color: Colors.indigo[400]),
                                           ),
                                         ],

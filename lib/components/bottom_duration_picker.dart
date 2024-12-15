@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/controllers/firestore_operations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BottomDurationPickerSheet extends StatefulWidget {
   final String? habitId, habitUnits;
@@ -57,7 +58,7 @@ class _BottomDurationPickerSheetState extends State<BottomDurationPickerSheet> {
           children: [
             Text(
               "Duration: ",
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 color: Colors.indigo[400],
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -79,7 +80,7 @@ class _BottomDurationPickerSheetState extends State<BottomDurationPickerSheet> {
                     Navigator.pop(widget.bottomSheetContext);
                   },
                   child: Text("Cancel",
-                      style: TextStyle(color: Colors.indigo[400])),
+                      style: GoogleFonts.lato(color: Colors.indigo[400])),
                 ),
                 TextButton(
                   onPressed: () async {
@@ -112,9 +113,9 @@ class _BottomDurationPickerSheetState extends State<BottomDurationPickerSheet> {
                     // ignore: use_build_context_synchronously
                     Navigator.pop(widget.bottomSheetContext);
                   },
-                  child: const Text(
+                  child: Text(
                     "Add",
-                    style: TextStyle(color: Color(0xFF02925D)),
+                    style: GoogleFonts.lato(color: const Color(0xFF02925D)),
                   ),
                 ),
               ],
@@ -194,7 +195,7 @@ class _BottomDurationPickerSheetState extends State<BottomDurationPickerSheet> {
                           decoration:
                               const InputDecoration(border: InputBorder.none),
                           controller: controller,
-                          style: TextStyle(
+                          style: GoogleFonts.lato(
                             fontSize: MediaQuery.of(context).size.width / 14,
                             color: Colors.indigo[900],
                           ),
@@ -220,7 +221,7 @@ class _BottomDurationPickerSheetState extends State<BottomDurationPickerSheet> {
                       ),
                       Text(
                         abbr,
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontSize: MediaQuery.of(context).size.width / 18,
                           color: Colors.indigo[900],
                         ),

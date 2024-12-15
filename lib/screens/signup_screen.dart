@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/controllers/firestore_operations.dart';
 import 'package:focused_habits/screens/verifyemail_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -64,12 +65,12 @@ class _SignupScreenState extends State<SignupScreen> {
                 alignment: Alignment.bottomLeft,
                 child: Container(
                   margin: const EdgeInsets.only(left: 18),
-                  child: const Text(
+                  child: Text(
                     "Create a new Account",
-                    style: TextStyle(
+                    style: GoogleFonts.lato(
                       fontWeight: FontWeight.w600,
                       fontSize: 38,
-                      color: Color(0xFF2e86ab),
+                      color: const Color(0xFF2e86ab),
                     ),
                   ),
                 ),
@@ -120,7 +121,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
-                          style: const TextStyle(fontSize: 16),
+                          style: GoogleFonts.lato(fontSize: 16),
                           onSubmitted: (_) => signUp(),
                           decoration: const InputDecoration(
                               labelText: "Password",
@@ -143,23 +144,23 @@ class _SignupScreenState extends State<SignupScreen> {
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(10)))),
-                          child: const Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
                                 child: Text(
                                   "Sign up",
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 18),
+                                  style: GoogleFonts.lato(fontSize: 18),
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                      const Text(
+                      Text(
                         "or",
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontSize: 18,
                         ),
                       ),
@@ -170,9 +171,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           alignment: WrapAlignment.center,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            const Text(
+                            Text(
                               "Already have an account?",
-                              style: TextStyle(fontSize: 16),
+                              style: GoogleFonts.lato(fontSize: 16),
                             ),
                             MaterialButton(
                               splashColor: Colors.transparent,
@@ -181,9 +182,10 @@ class _SignupScreenState extends State<SignupScreen> {
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: const Text(
+                              child: Text(
                                 "Sign in",
-                                style: TextStyle(color: Color(0xFF058ed9)),
+                                style: GoogleFonts.lato(
+                                    color: const Color(0xFF058ed9)),
                               ),
                             ),
                           ],

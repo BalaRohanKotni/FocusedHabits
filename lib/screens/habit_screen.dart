@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:focused_habits/components/heatmap_tile.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/controllers/firestore_operations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class HabitScreen extends StatefulWidget {
@@ -131,7 +132,7 @@ class _HabitScreenState extends State<HabitScreen> {
                                   Expanded(
                                     child: TextField(
                                       controller: habitNameController,
-                                      style: TextStyle(
+                                      style: GoogleFonts.lato(
                                         color: Colors.indigo[400],
                                       ),
                                       decoration: const InputDecoration(
@@ -161,7 +162,7 @@ class _HabitScreenState extends State<HabitScreen> {
                                 children: [
                                   Text(
                                     "Total ${habitDocument['units']}: $formattedHabitValue",
-                                    style: TextStyle(
+                                    style: GoogleFonts.lato(
                                       fontSize: 16,
                                       color: Colors.indigo[400],
                                       fontWeight: FontWeight.w600,
@@ -174,7 +175,7 @@ class _HabitScreenState extends State<HabitScreen> {
                                 width: double.maxFinite,
                                 child: Text(
                                   "History",
-                                  style: TextStyle(
+                                  style: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.indigo[400],
@@ -222,13 +223,13 @@ class _HabitScreenState extends State<HabitScreen> {
                                                           .fromMillisecondsSinceEpoch(
                                                               currentHabitEntry[
                                                                   'dateTimeMillisecondsSinceEpoch'])),
-                                                  style: TextStyle(
+                                                  style: GoogleFonts.lato(
                                                     color: Colors.indigo[400],
                                                   ),
                                                 ),
                                                 Text(
                                                   "${DateFormat('HH:mm').format(DateTime.fromMillisecondsSinceEpoch(currentHabitEntry['dateTimeMillisecondsSinceEpoch']))} - $formattedHabitValue",
-                                                  style: TextStyle(
+                                                  style: GoogleFonts.lato(
                                                     color: Colors.indigo[400],
                                                   ),
                                                 ),

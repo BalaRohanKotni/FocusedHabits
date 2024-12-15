@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_habits/constants.dart';
 import 'package:focused_habits/controllers/firestore_operations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FocusScreen extends StatefulWidget {
   const FocusScreen({super.key});
@@ -198,7 +199,7 @@ class _FocusScreenState extends State<FocusScreen>
                           decoration:
                               const InputDecoration(border: InputBorder.none),
                           controller: controller,
-                          style: TextStyle(
+                          style: GoogleFonts.lato(
                             fontSize: MediaQuery.of(context).size.width / 14,
                             color: Colors.indigo[400],
                           ),
@@ -224,7 +225,7 @@ class _FocusScreenState extends State<FocusScreen>
                       ),
                       Text(
                         abbr,
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                             fontSize: MediaQuery.of(context).size.width / 18,
                             color: Colors.indigo[400]),
                       )
@@ -386,7 +387,8 @@ class _FocusScreenState extends State<FocusScreen>
                                   },
                                   child: Text(
                                     "Timer",
-                                    style: TextStyle(color: Colors.indigo[800]),
+                                    style: GoogleFonts.lato(
+                                        color: Colors.indigo[800]),
                                   ),
                                 ),
                               ),
@@ -414,7 +416,8 @@ class _FocusScreenState extends State<FocusScreen>
                                   },
                                   child: Text(
                                     "Stopwatch",
-                                    style: TextStyle(color: Colors.indigo[800]),
+                                    style: GoogleFonts.lato(
+                                        color: Colors.indigo[800]),
                                   ),
                                 ),
                               ),
@@ -454,7 +457,7 @@ class _FocusScreenState extends State<FocusScreen>
                                           children: [
                                             Text(
                                               hoursController.text,
-                                              style: TextStyle(
+                                              style: GoogleFonts.lato(
                                                 fontSize: MediaQuery.of(context)
                                                         .size
                                                         .width /
@@ -464,7 +467,7 @@ class _FocusScreenState extends State<FocusScreen>
                                             ),
                                             Text(
                                               "h",
-                                              style: TextStyle(
+                                              style: GoogleFonts.lato(
                                                   fontSize:
                                                       MediaQuery.of(context)
                                                               .size
@@ -478,7 +481,7 @@ class _FocusScreenState extends State<FocusScreen>
                                           children: [
                                             Text(
                                               minutesController.text,
-                                              style: TextStyle(
+                                              style: GoogleFonts.lato(
                                                 fontSize: MediaQuery.of(context)
                                                         .size
                                                         .width /
@@ -488,7 +491,7 @@ class _FocusScreenState extends State<FocusScreen>
                                             ),
                                             Text(
                                               "m",
-                                              style: TextStyle(
+                                              style: GoogleFonts.lato(
                                                   fontSize:
                                                       MediaQuery.of(context)
                                                               .size
@@ -502,7 +505,7 @@ class _FocusScreenState extends State<FocusScreen>
                                           children: [
                                             Text(
                                               secondsController.text,
-                                              style: TextStyle(
+                                              style: GoogleFonts.lato(
                                                 fontSize: MediaQuery.of(context)
                                                         .size
                                                         .width /
@@ -512,7 +515,7 @@ class _FocusScreenState extends State<FocusScreen>
                                             ),
                                             Text(
                                               "s",
-                                              style: TextStyle(
+                                              style: GoogleFonts.lato(
                                                   fontSize:
                                                       MediaQuery.of(context)
                                                               .size
@@ -534,11 +537,13 @@ class _FocusScreenState extends State<FocusScreen>
                           ),
                           TextField(
                               controller: focusNoteController,
-                              style: TextStyle(color: Colors.indigo[400]),
+                              style:
+                                  GoogleFonts.lato(color: Colors.indigo[400]),
                               cursorColor: Colors.indigo[400],
                               decoration: InputDecoration(
                                 hintText: 'Note',
-                                hintStyle: TextStyle(color: Colors.indigo[400]),
+                                hintStyle:
+                                    GoogleFonts.lato(color: Colors.indigo[400]),
                               )),
                           const SizedBox(
                             height: 36,
@@ -551,7 +556,7 @@ class _FocusScreenState extends State<FocusScreen>
                                   children: [
                                     Text(
                                       "Time in focus: ${timeInFocus ~/ 3600}h ${(timeInFocus % 3600) ~/ 60}m ${(timeInFocus % 60)}s",
-                                      style: TextStyle(
+                                      style: GoogleFonts.lato(
                                         color: Colors.indigo[400],
                                       ),
                                     ),
@@ -582,11 +587,12 @@ class _FocusScreenState extends State<FocusScreen>
                                                     : startStopwatch();
                                               });
                                             },
-                                            child: const Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(12.0),
                                               child: Text(
                                                 "Resume",
-                                                style: TextStyle(
+                                                style: GoogleFonts.lato(
                                                     color: Colors.white),
                                               ),
                                             ),
@@ -612,11 +618,12 @@ class _FocusScreenState extends State<FocusScreen>
                                                 _timer.cancel();
                                               });
                                             },
-                                            child: const Padding(
-                                              padding: EdgeInsets.all(12.0),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(12.0),
                                               child: Text(
                                                 "Pause",
-                                                style: TextStyle(
+                                                style: GoogleFonts.lato(
                                                     color: Colors.white),
                                               ),
                                             ),
@@ -640,11 +647,12 @@ class _FocusScreenState extends State<FocusScreen>
                                               FocusSessionStatus.inactive;
                                         });
                                       },
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(12.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(12.0),
                                         child: Text(
                                           "Stop",
-                                          style: TextStyle(color: Colors.white),
+                                          style: GoogleFonts.lato(
+                                              color: Colors.white),
                                         ),
                                       ),
                                     ),
@@ -667,11 +675,12 @@ class _FocusScreenState extends State<FocusScreen>
                                               FocusSessionStatus.inactive;
                                         });
                                       },
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(12.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(12.0),
                                         child: Text(
                                           "Cancel",
-                                          style: TextStyle(color: Colors.white),
+                                          style: GoogleFonts.lato(
+                                              color: Colors.white),
                                         ),
                                       ),
                                     ),
@@ -698,11 +707,12 @@ class _FocusScreenState extends State<FocusScreen>
                                           : startStopwatch();
                                     });
                                   },
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Text(
                                       "Start",
-                                      style: TextStyle(color: Colors.white),
+                                      style:
+                                          GoogleFonts.lato(color: Colors.white),
                                     ),
                                   ),
                                 ),
@@ -713,7 +723,8 @@ class _FocusScreenState extends State<FocusScreen>
                             children: [
                               Text(
                                 "Link with habit: ",
-                                style: TextStyle(color: Colors.indigo[400]),
+                                style:
+                                    GoogleFonts.lato(color: Colors.indigo[400]),
                               ),
                               DropdownButton(
                                 focusNode: habitPickerFocusNode,
@@ -723,7 +734,7 @@ class _FocusScreenState extends State<FocusScreen>
                                           value: habits.indexOf(habit),
                                           child: Text(
                                             habit['name']!,
-                                            style: TextStyle(
+                                            style: GoogleFonts.lato(
                                                 color: Colors.indigo[400]),
                                           ),
                                         ))
