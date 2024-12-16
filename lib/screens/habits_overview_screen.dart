@@ -52,94 +52,137 @@ class _HabitsScreenState extends State<HabitsScreen> {
                   (a, b) => a.data()['index'].compareTo(b.data()['index']));
               return Scaffold(
                 backgroundColor: kAppBackgroundColor,
-                body: Container(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                  ),
-                  child: ReorderableGridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount:
-                          (MediaQuery.of(context).size.width ~/ 370 > 0)
-                              ? MediaQuery.of(context).size.width ~/ 370
-                              : 1,
-                      childAspectRatio: 1,
-                      mainAxisExtent: 382,
-                    ),
-                    // shrinkWrap: true,
-                    itemCount: snapshot.data!.docs.length,
-                    onReorder: (oldIndex, newIndex) async {
-                      List originalList = [...orderedHabitsList];
-                      final element = orderedHabitsList.removeAt(oldIndex);
-                      orderedHabitsList.insert(newIndex, element);
-                      for (int index = 0;
-                          index < orderedHabitsList.length;
-                          index++) {
-                        if (originalList[index] == orderedHabitsList[index]) {
-                        } else {
-                          firestoreUpdateHabit(
-                            user: FirebaseAuth.instance.currentUser!,
-                            updatedHabit: {'index': index},
-                            id: orderedHabitsList[index]['id'],
-                          );
-                        }
-                      }
-                    },
-                    itemBuilder: (context, index) {
-                      Map<DateTime, int> habitDataSets = {};
-                      for (int i = 0;
-                          i < orderedHabitsList[index]['entries'].length;
-                          i++) {
-                        DateTime entryDateTime =
-                            DateTime.fromMillisecondsSinceEpoch(
-                                orderedHabitsList[index]['entries'][i]
-                                    ['dateTimeMillisecondsSinceEpoch']);
-                        // Here calendar heat map is not registering entries if datetime is not perfectly on a day like correct: (2024-11-08 00:00:00.000) not 2024-11-08 23:59:59.999
-                        entryDateTime = DateTime(entryDateTime.year,
-                            entryDateTime.month, entryDateTime.day);
-
-                        habitDataSets[entryDateTime] =
-                            (habitDataSets[entryDateTime] != null)
-                                ? habitDataSets[entryDateTime]! +
-                                    orderedHabitsList[index]['entries'][i]
-                                        ['value']
-                                : orderedHabitsList[index]['entries'][i]
-                                    ['value'];
-                      }
-                      return HeatMapTile(
-                        key: ValueKey(orderedHabitsList[index]['id']),
-                        habitName: orderedHabitsList[index]['name'],
-                        showHabitName: true,
-                        showAddEntry: true,
-                        habitUnits: orderedHabitsList[index]['units'],
-                        date: DateTime.now(),
-                        context: context,
-                        dataSets: habitDataSets,
-                        habitId: orderedHabitsList[index]['id'],
-                        size: ((MediaQuery.of(context).size.width / 13.5) > 34)
-                            ? 34
-                            : MediaQuery.of(context).size.width / 13.5,
-                        bottomWidget: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => HabitScreen(
-                                          habitId: orderedHabitsList[index]
-                                              ['id'],
-                                        )));
-                              },
-                              child: Text(
-                                "More Details",
-                                style:
-                                    GoogleFonts.lato(color: Colors.indigo[400]),
+                body: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        PopupMenuButton(
+                          color: kAppBackgroundColor,
+                          icon: Icon(
+                            Icons.more_vert,
+                            color: Colors.indigo[400],
+                          ),
+                          itemBuilder: (context) {
+                            return [
+                              PopupMenuItem(
+                                onTap: () {
+                                  firestoreSetDefaultTabIndex(
+                                      FirebaseAuth.instance.currentUser!, 2);
+                                },
+                                child: Text(
+                                  "Set this screen on launch",
+                                  style: GoogleFonts.lato(
+                                    color: Colors.indigo[400],
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
-                            )
-                          ],
+                            ];
+                          },
+                        )
+                      ],
+                    ),
+                    Expanded(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 16,
                         ),
-                      );
-                    },
-                  ),
+                        child: ReorderableGridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount:
+                                (MediaQuery.of(context).size.width ~/ 370 > 0)
+                                    ? MediaQuery.of(context).size.width ~/ 370
+                                    : 1,
+                            childAspectRatio: 1,
+                            mainAxisExtent: 382,
+                          ),
+                          // shrinkWrap: true,
+                          itemCount: snapshot.data!.docs.length,
+                          onReorder: (oldIndex, newIndex) async {
+                            List originalList = [...orderedHabitsList];
+                            final element =
+                                orderedHabitsList.removeAt(oldIndex);
+                            orderedHabitsList.insert(newIndex, element);
+                            for (int index = 0;
+                                index < orderedHabitsList.length;
+                                index++) {
+                              if (originalList[index] ==
+                                  orderedHabitsList[index]) {
+                              } else {
+                                firestoreUpdateHabit(
+                                  user: FirebaseAuth.instance.currentUser!,
+                                  updatedHabit: {'index': index},
+                                  id: orderedHabitsList[index]['id'],
+                                );
+                              }
+                            }
+                          },
+                          itemBuilder: (context, index) {
+                            Map<DateTime, int> habitDataSets = {};
+                            for (int i = 0;
+                                i < orderedHabitsList[index]['entries'].length;
+                                i++) {
+                              DateTime entryDateTime =
+                                  DateTime.fromMillisecondsSinceEpoch(
+                                      orderedHabitsList[index]['entries'][i]
+                                          ['dateTimeMillisecondsSinceEpoch']);
+                              // Here calendar heat map is not registering entries if datetime is not perfectly on a day like correct: (2024-11-08 00:00:00.000) not 2024-11-08 23:59:59.999
+                              entryDateTime = DateTime(entryDateTime.year,
+                                  entryDateTime.month, entryDateTime.day);
+
+                              habitDataSets[entryDateTime] =
+                                  (habitDataSets[entryDateTime] != null)
+                                      ? habitDataSets[entryDateTime]! +
+                                          orderedHabitsList[index]['entries'][i]
+                                              ['value']
+                                      : orderedHabitsList[index]['entries'][i]
+                                          ['value'];
+                            }
+                            return HeatMapTile(
+                              key: ValueKey(orderedHabitsList[index]['id']),
+                              habitName: orderedHabitsList[index]['name'],
+                              showHabitName: true,
+                              showAddEntry: true,
+                              habitUnits: orderedHabitsList[index]['units'],
+                              date: DateTime.now(),
+                              context: context,
+                              dataSets: habitDataSets,
+                              habitId: orderedHabitsList[index]['id'],
+                              size: ((MediaQuery.of(context).size.width /
+                                          13.5) >
+                                      34)
+                                  ? 34
+                                  : MediaQuery.of(context).size.width / 13.5,
+                              bottomWidget: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                              builder: (context) => HabitScreen(
+                                                    habitId:
+                                                        orderedHabitsList[index]
+                                                            ['id'],
+                                                  )));
+                                    },
+                                    child: Text(
+                                      "More Details",
+                                      style: GoogleFonts.lato(
+                                          color: Colors.indigo[400]),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 floatingActionButton: FloatingActionButton(
                   backgroundColor: Colors.indigo[900],

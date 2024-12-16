@@ -360,6 +360,37 @@ class _FocusScreenState extends State<FocusScreen>
                           //   ],
                           // ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              PopupMenuButton(
+                                color: kAppBackgroundColor,
+                                icon: Icon(
+                                  Icons.more_vert,
+                                  color: Colors.indigo[400],
+                                ),
+                                itemBuilder: (context) {
+                                  return [
+                                    PopupMenuItem(
+                                      onTap: () {
+                                        firestoreSetDefaultTabIndex(
+                                            FirebaseAuth.instance.currentUser!,
+                                            1);
+                                      },
+                                      child: Text(
+                                        "Set this screen on launch",
+                                        style: GoogleFonts.lato(
+                                          color: Colors.indigo[400],
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ];
+                                },
+                              )
+                            ],
+                          ),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Expanded(
