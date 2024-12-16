@@ -79,6 +79,24 @@ class _HabitsScreenState extends State<HabitsScreen> {
                                   ),
                                 ),
                               ),
+                              PopupMenuItem(
+                                onTap: () async {
+                                  bool prevValue =
+                                      (await firestoreGetHideTabBarInHabitsOverview(
+                                          FirebaseAuth.instance.currentUser!));
+                                  firestoreSetHideTabBarInHabitsOverview(
+                                      FirebaseAuth.instance.currentUser!,
+                                      !prevValue);
+                                },
+                                child: Text(
+                                  "Toggle bottom tab bar in this screen",
+                                  style: GoogleFonts.lato(
+                                    color: Colors.indigo[400],
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
                             ];
                           },
                         )

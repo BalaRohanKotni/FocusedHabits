@@ -12,8 +12,24 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   bool isScrollable = false;
+  bool hideTabBar = false;
+  bool firstBuild = true;
+  late TabController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<Object>(
@@ -28,35 +44,60 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: 40,
                 child: Center(child: CircularProgressIndicator()));
           }
-          int defaultTabIndex =
-              int.parse(snapshot.data!['defaultTabIndex'].toString());
+          if (firstBuild) {
+            _controller.index =
+                int.parse(snapshot.data!['defaultTabIndex'].toString());
+            firstBuild = false;
+          }
+
           return DefaultTabController(
             length: 3,
-            initialIndex: defaultTabIndex,
-            child: Scaffold(
-              body: const TabBarView(
-                children: [
-                  ProfileScreen(),
-                  FocusScreen(),
-                  HabitsScreen(),
-                ],
-              ),
-              bottomNavigationBar: Container(
-                color: Colors.indigo[100],
-                child: TabBar(
-                    labelColor: Colors.indigo[900],
-                    indicatorColor: Colors.indigo[900],
-                    unselectedLabelColor: Colors.grey[600],
-                    isScrollable: isScrollable,
-                    tabs: const [
-                      Tab(icon: Icon(Icons.person), text: "Profile"),
-                      Tab(icon: Icon(Icons.self_improvement), text: "Focus"),
-                      Tab(icon: Icon(Icons.book), text: "Habits"),
-                    ],
-                    indicatorWeight: 5,
-                    indicatorSize: TabBarIndicatorSize.label),
-              ),
-            ),
+            child: Builder(builder: (context) {
+              if (_controller.index == 2) {
+                hideTabBar = snapshot.data!['hideTabBarInHabitsOverview'];
+              }
+              _controller.addListener(() {
+                if (_controller.index == 2) {
+                  hideTabBar = snapshot.data!['hideTabBarInHabitsOverview'];
+                } else {
+                  hideTabBar = false;
+                }
+                setState(() {});
+              });
+              return Scaffold(
+                body: TabBarView(
+                  controller: _controller,
+                  children: const [
+                    ProfileScreen(),
+                    FocusScreen(),
+                    HabitsScreen(),
+                  ],
+                ),
+                bottomNavigationBar: Container(
+                  color: Colors.indigo[100],
+                  child: (!hideTabBar)
+                      ? TabBar(
+                          controller: _controller,
+                          labelColor: Colors.indigo[900],
+                          indicatorColor: Colors.indigo[900],
+                          unselectedLabelColor: Colors.grey[600],
+                          isScrollable: isScrollable,
+                          tabs: const [
+                            Tab(icon: Icon(Icons.person), text: "Profile"),
+                            Tab(
+                                icon: Icon(Icons.self_improvement),
+                                text: "Focus"),
+                            Tab(icon: Icon(Icons.book), text: "Habits"),
+                          ],
+                          indicatorWeight: 5,
+                          indicatorSize: TabBarIndicatorSize.label)
+                      : Container(
+                          height: 2,
+                          width: 2,
+                        ),
+                ),
+              );
+            }),
           );
         });
   }

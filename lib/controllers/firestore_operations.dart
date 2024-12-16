@@ -18,6 +18,7 @@ Future firestoreCreateUserCollection(User user, String name) async {
       'focusIndex': 0,
       'theme': "light",
       'defaultTabIndex': 1,
+      'hideTabBarInHabitsOverview': false,
     },
   );
 }
@@ -27,6 +28,21 @@ Future firestoreSetDefaultTabIndex(User user, int index) async {
       .collection(firestoreCollection)
       .doc(user.uid)
       .update({"defaultTabIndex": index});
+}
+
+Future firestoreSetHideTabBarInHabitsOverview(User user, bool value) async {
+  return await FirebaseFirestore.instance
+      .collection(firestoreCollection)
+      .doc(user.uid)
+      .update({"hideTabBarInHabitsOverview": value});
+}
+
+Future firestoreGetHideTabBarInHabitsOverview(User user) async {
+  return await FirebaseFirestore.instance
+      .collection(firestoreCollection)
+      .doc(user.uid)
+      .get()
+      .then((value) => value.data()!["hideTabBarInHabitsOverview"]);
 }
 
 Future firestoreSetTheme(User user, String theme) async {
