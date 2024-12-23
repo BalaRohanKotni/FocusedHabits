@@ -107,6 +107,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   : null,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           controller: emailController,
+                          style: GoogleFonts.lato(
+                            fontSize: 16,
+                            color: Colors.indigo[400],
+                          ),
                         ),
                         SizedBox(
                           height: 50,

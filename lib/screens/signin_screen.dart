@@ -94,13 +94,20 @@ class _SignInScreenState extends State<SignInScreen> {
                                 : null,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: emailController,
+                        style: GoogleFonts.lato(
+                          fontSize: 16,
+                          color: Colors.indigo[400],
+                        ),
                       ),
                       TextField(
                           controller: passwordController,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
-                          style: GoogleFonts.lato(fontSize: 16),
+                          style: GoogleFonts.lato(
+                            fontSize: 16,
+                            color: Colors.indigo[400],
+                          ),
                           onSubmitted: (_) => signIn(),
                           decoration: const InputDecoration(
                               labelText: "Password",
@@ -173,7 +180,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           children: [
                             Text(
                               "New?",
-                              style: GoogleFonts.lato(fontSize: 16),
+                              style: GoogleFonts.lato(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
                             ),
                             MaterialButton(
                               padding: const EdgeInsets.only(left: 8),

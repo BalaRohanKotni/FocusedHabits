@@ -98,11 +98,17 @@ class _SignupScreenState extends State<SignupScreen> {
                           border: OutlineInputBorder(),
                         ),
                         controller: nameController,
+                        style: TextStyle(
+                          color: Colors.indigo[400],
+                        ),
                       ),
                       const SizedBox(
                         height: 32,
                       ),
                       TextFormField(
+                        style: TextStyle(
+                          color: Colors.indigo[400],
+                        ),
                         decoration: const InputDecoration(
                           labelText: "Email",
                           border: OutlineInputBorder(),
@@ -122,7 +128,10 @@ class _SignupScreenState extends State<SignupScreen> {
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
-                          style: GoogleFonts.lato(fontSize: 16),
+                          style: GoogleFonts.lato(
+                            fontSize: 16,
+                            color: Colors.indigo[400],
+                          ),
                           onSubmitted: (_) => signUp(),
                           decoration: const InputDecoration(
                               labelText: "Password",
@@ -174,7 +183,10 @@ class _SignupScreenState extends State<SignupScreen> {
                           children: [
                             Text(
                               "Already have an account?",
-                              style: GoogleFonts.lato(fontSize: 16),
+                              style: GoogleFonts.lato(
+                                fontSize: 16,
+                                color: Colors.black,
+                              ),
                             ),
                             MaterialButton(
                               splashColor: Colors.transparent,
