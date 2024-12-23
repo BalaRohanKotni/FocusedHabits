@@ -68,7 +68,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           "Reset Password",
                           style: semiBold18().copyWith(
                             fontSize: 38,
-                            // color: kPurpleDarkShade,
+                            color: Colors.indigo[900],
                           ),
                         ),
                         Text(
@@ -82,11 +82,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: (MediaQuery.sizeOf(context).height >=
-                        MediaQuery.sizeOf(context).width)
-                    ? MediaQuery.sizeOf(context).height * 3 / 4
-                    : MediaQuery.sizeOf(context).width * 3 / 4,
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: (MediaQuery.sizeOf(context).height >=
+                          MediaQuery.sizeOf(context).width)
+                      ? MediaQuery.sizeOf(context).height * 3 / 4
+                      : MediaQuery.sizeOf(context).height * 3 / 4,
+                ),
                 child: SafeArea(
                   child: Container(
                     margin: const EdgeInsets.all(16),

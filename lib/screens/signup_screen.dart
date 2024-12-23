@@ -68,19 +68,20 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: Text(
                     "Create a new Account",
                     style: GoogleFonts.lato(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 38,
-                      color: const Color(0xFF2e86ab),
-                    ),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 38,
+                        color: Colors.indigo[900]),
                   ),
                 ),
               ),
             ),
-            SizedBox(
-              height: (MediaQuery.sizeOf(context).height >=
-                      MediaQuery.sizeOf(context).width)
-                  ? MediaQuery.sizeOf(context).height * 3 / 4
-                  : MediaQuery.sizeOf(context).width * 3 / 4,
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: (MediaQuery.sizeOf(context).height >=
+                        MediaQuery.sizeOf(context).width)
+                    ? MediaQuery.sizeOf(context).height * 3 / 4
+                    : MediaQuery.sizeOf(context).height * 3 / 4,
+              ),
               child: SafeArea(
                 child: Container(
                   margin: const EdgeInsets.only(left: 18, right: 18),
@@ -184,8 +185,8 @@ class _SignupScreenState extends State<SignupScreen> {
                               },
                               child: Text(
                                 "Sign in",
-                                style: GoogleFonts.lato(
-                                    color: const Color(0xFF058ed9)),
+                                style:
+                                    GoogleFonts.lato(color: Colors.indigo[900]),
                               ),
                             ),
                           ],

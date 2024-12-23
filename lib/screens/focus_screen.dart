@@ -758,6 +758,10 @@ class _FocusScreenState extends State<FocusScreen>
                                     GoogleFonts.lato(color: Colors.indigo[400]),
                               ),
                               DropdownButton(
+                                dropdownColor:
+                                    (kAppBackgroundColor == Colors.white)
+                                        ? Colors.grey[200]
+                                        : Colors.grey[850],
                                 focusNode: habitPickerFocusNode,
                                 value: selectedHabitIndex,
                                 items: habits

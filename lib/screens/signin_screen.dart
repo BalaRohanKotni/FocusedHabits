@@ -48,7 +48,7 @@ class _SignInScreenState extends State<SignInScreen> {
               height: (MediaQuery.sizeOf(context).height >=
                       MediaQuery.sizeOf(context).width)
                   ? MediaQuery.sizeOf(context).height / 4
-                  : MediaQuery.sizeOf(context).width / 4,
+                  : MediaQuery.sizeOf(context).height / 4,
               child: Container(
                 width: double.maxFinite,
                 alignment: Alignment.bottomLeft,
@@ -59,17 +59,23 @@ class _SignInScreenState extends State<SignInScreen> {
                     style: GoogleFonts.lato(
                       fontWeight: FontWeight.w600,
                       fontSize: 38,
-                      color: const Color(0xFF2e86ab),
+                      color: Colors.indigo[900],
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(
-              height: (MediaQuery.sizeOf(context).height >=
-                      MediaQuery.sizeOf(context).width)
-                  ? MediaQuery.sizeOf(context).height * 3 / 4
-                  : MediaQuery.sizeOf(context).width * 3 / 4,
+            ConstrainedBox(
+              // height: (MediaQuery.sizeOf(context).height >=
+              //         MediaQuery.sizeOf(context).width)
+              //     ? MediaQuery.sizeOf(context).height * 3 / 4
+              //     : MediaQuery.sizeOf(context).height * 3 / 4,
+              constraints: BoxConstraints(
+                minHeight: (MediaQuery.sizeOf(context).height >=
+                        MediaQuery.sizeOf(context).width)
+                    ? MediaQuery.sizeOf(context).height * 3 / 4
+                    : MediaQuery.sizeOf(context).height * 3 / 4,
+              ),
               child: SafeArea(
                 child: Container(
                   margin: const EdgeInsets.only(left: 18, right: 18),
@@ -146,8 +152,8 @@ class _SignInScreenState extends State<SignInScreen> {
                             },
                             child: Text(
                               "Forgot password?",
-                              style: GoogleFonts.lato(
-                                  color: const Color(0xFF058ed9)),
+                              style:
+                                  GoogleFonts.lato(color: Colors.indigo[900]),
                             ),
                           ),
                         ],
@@ -183,8 +189,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               },
                               child: Text(
                                 "Create an account",
-                                style: GoogleFonts.lato(
-                                    color: const Color(0xFF058ed9)),
+                                style:
+                                    GoogleFonts.lato(color: Colors.indigo[900]),
                                 // style: GoogleFonts.lato (
                                 //     color: kPurpleDarkShade, fontSize: 16),
                               ),

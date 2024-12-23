@@ -84,10 +84,9 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               child: Text(
                 "Verify email address",
                 style: GoogleFonts.lato(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 38,
-                  color: const Color(0xFF2e86ab),
-                ),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 38,
+                    color: Colors.indigo[900]),
               ),
             ),
           ),
