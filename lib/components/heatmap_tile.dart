@@ -45,6 +45,44 @@ class _HeatMapTileState extends State<HeatMapTile> {
 
   @override
   Widget build(BuildContext context) {
+    int streak = 0;
+    List<DateTime> dates = [];
+
+    for (var key in widget.dataSets.keys) {
+      dates.add(key);
+    }
+    dates.sort();
+    dates.sort();
+    dates = dates.reversed.toList();
+    DateTime today = DateTime.now();
+    today = DateTime(today.year, today.month, today.day);
+    DateTime yesterday = today.subtract(const Duration(days: 1));
+    yesterday = DateTime(yesterday.year, yesterday.month, yesterday.day);
+
+    int currentStreak = 1;
+
+    dates = dates
+        .where((date) => date.isBefore(today.add(const Duration(days: 1))))
+        .toList();
+
+    if (dates.contains(today) && !dates.contains(yesterday)) {
+      currentStreak = 1;
+    } else if ((dates.contains(today) && dates.contains(yesterday)) ||
+        dates.contains(yesterday)) {
+//     dates = dates.reversed.toList();
+      for (int i = 0; i < dates.length - 1; i++) {
+        Duration difference = dates[i + 1].difference(dates[i]);
+        if (difference.inDays == -1) {
+//         print([dates[i], dates[i + 1]]);
+          currentStreak++;
+        } else {
+          break;
+        }
+      }
+    } else {
+      currentStreak = 0;
+    }
+    streak = currentStreak;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -233,6 +271,27 @@ class _HeatMapTileState extends State<HeatMapTile> {
                               : Container(),
                         ),
                       ],
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Streak: ",
+                      style: GoogleFonts.lato(
+                        fontSize: 16,
+                        color: Colors.indigo[400],
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      streak.toString(),
+                      style: GoogleFonts.lato(
+                        fontSize: 16,
+                        color: Colors.indigo[400],
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ],
                 ),

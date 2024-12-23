@@ -115,7 +115,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
                                     ? MediaQuery.of(context).size.width ~/ 370
                                     : 1,
                             childAspectRatio: 1,
-                            mainAxisExtent: 382,
+                            mainAxisExtent: 410,
                           ),
                           // shrinkWrap: true,
                           itemCount: snapshot.data!.docs.length,
